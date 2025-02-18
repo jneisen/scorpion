@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://b6vtkol042rok"
+path="res://.godot/imported/ground.png-4d287241cc8465d158252ec59f984725.image"
+
+[deps]
+
+source_file="res://Sprites/ground.png"
+dest_files=["res://.godot/imported/ground.png-4d287241cc8465d158252ec59f984725.image"]
+
+[params]
+

@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://dd4k8xeg1nijm"
+path="res://.godot/imported/perlin_noise.png-fcba96d0755c7d310243d2c06f90775d.image"
+
+[deps]
+
+source_file="res://Sprites/perlin_noise.png"
+dest_files=["res://.godot/imported/perlin_noise.png-fcba96d0755c7d310243d2c06f90775d.image"]
+
+[params]
+
