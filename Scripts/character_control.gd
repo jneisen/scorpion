@@ -8,6 +8,12 @@ var player_movement = Vector2.ZERO
 var forward_direction = Vector2(0, -1)
 @onready var marker = $Marker2D
 
+@onready var _animated_sprite = $AnimatedSprite2D
+@onready var _tail_sprite = $TailSprite
+
+func _ready() -> void:
+	_tail_sprite.play()
+
 func _process(_delta: float) -> void:
 	#get the character input
 	var left = Input.is_action_pressed("Left")
@@ -24,6 +30,13 @@ func _process(_delta: float) -> void:
 		player_movement = Vector2(forward_speed, 0)
 	else:
 		player_movement = Vector2(smooth_to_zero(player_movement.x), 0)
+	
+	#animation
+	if(player_movement == Vector2.ZERO && player_rotation == 0):
+		_animated_sprite.play()
+	else:
+		_animated_sprite.pause()
+		
 		
 func _physics_process(delta: float) -> void:
 	# rotate and then set rotation to zero
@@ -34,5 +47,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func smooth_to_zero(value):
+	if(abs(value) < 0.001):
+		return 0
 	return value * 0.95
 	

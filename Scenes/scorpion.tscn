@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://8w4trvc2dhig"]
+[gd_scene load_steps=10 format=3 uid="uid://8w4trvc2dhig"]
 
 [ext_resource type="Script" path="res://Scripts/character_control.gd" id="1_1dj1s"]
 [ext_resource type="Texture2D" uid="uid://baaaf774idbxf" path="res://Sprites/scorpion.png" id="1_efx4o"]
+[ext_resource type="Texture2D" uid="uid://cfv5dhattq23" path="res://Sprites/tail.png" id="3_mbhqb"]
+[ext_resource type="Texture2D" uid="uid://cp3r5ke1xsc8q" path="res://Sprites/scorpion_anim/tail-idle1.png" id="4_5ae5j"]
+[ext_resource type="Texture2D" uid="uid://t2demq8rk2j7" path="res://Sprites/scorpion_anim/tail-idle2.png" id="5_yyqav"]
+[ext_resource type="Texture2D" uid="uid://bd0h7u8viv65o" path="res://Sprites/scorpion_anim/tail-idle3.png" id="6_tb2c6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eo2xj"]
 radius = 205.0
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_ltjxp"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_r8agf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -15,6 +19,32 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8etv4"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("3_mbhqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5ae5j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yyqav")
+}, {
+"duration": 2.0,
+"texture": ExtResource("6_tb2c6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yyqav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5ae5j")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
 }]
 
 [node name="Scorpion" type="CharacterBody2D"]
@@ -28,7 +58,13 @@ shape = SubResource("CircleShape2D_eo2xj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(40, 40)
-sprite_frames = SubResource("SpriteFrames_ltjxp")
+sprite_frames = SubResource("SpriteFrames_r8agf")
+frame_progress = 0.304301
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -100)
+
+[node name="TailSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(40, 40)
+sprite_frames = SubResource("SpriteFrames_8etv4")
+frame_progress = 0.206926
