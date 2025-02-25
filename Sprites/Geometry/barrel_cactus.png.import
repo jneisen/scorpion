@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t2demq8rk2j7"
-path="res://.godot/imported/tail-idle2.png-a867f99ed0cbe53fcba8eea4da09abba.ctex"
+uid="uid://bw68c4g1uh4oc"
+path="res://.godot/imported/barrel_cactus.png-e62c4861f59cf9adbf86913a135e4c20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/scorpion_anim/tail-idle2.png"
-dest_files=["res://.godot/imported/tail-idle2.png-a867f99ed0cbe53fcba8eea4da09abba.ctex"]
+source_file="res://Sprites/Geometry/barrel_cactus.png"
+dest_files=["res://.godot/imported/barrel_cactus.png-e62c4861f59cf9adbf86913a135e4c20.ctex"]
 
 [params]
 

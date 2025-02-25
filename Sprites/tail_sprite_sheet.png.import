@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cp3r5ke1xsc8q"
-path="res://.godot/imported/tail-idle1.png-129b875a212e9e512c07514ad6b3f30c.ctex"
+uid="uid://brgwrkq28s5r2"
+path="res://.godot/imported/tail_sprite_sheet.png-e609f14fe1e7e31535dd5a7a626a8294.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/scorpion_anim/tail-idle1.png"
-dest_files=["res://.godot/imported/tail-idle1.png-129b875a212e9e512c07514ad6b3f30c.ctex"]
+source_file="res://Sprites/tail_sprite_sheet.png"
+dest_files=["res://.godot/imported/tail_sprite_sheet.png-e609f14fe1e7e31535dd5a7a626a8294.ctex"]
 
 [params]
 

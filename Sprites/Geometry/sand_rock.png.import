@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bd0h7u8viv65o"
-path="res://.godot/imported/tail-idle3.png-afb5f1930a43118a33c1d47d1401af12.ctex"
+uid="uid://ch454kia1uopy"
+path="res://.godot/imported/sand_rock.png-ea19ace1999456969233bfbee2c70b6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/scorpion_anim/tail-idle3.png"
-dest_files=["res://.godot/imported/tail-idle3.png-afb5f1930a43118a33c1d47d1401af12.ctex"]
+source_file="res://Sprites/Geometry/sand_rock.png"
+dest_files=["res://.godot/imported/sand_rock.png-ea19ace1999456969233bfbee2c70b6b.ctex"]
 
 [params]
 

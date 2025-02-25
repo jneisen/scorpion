@@ -1,12 +1,22 @@
 extends Sprite2D
 
-var noise : Image
-var base : Image
+var noise = load("res://Sprites/Geometry/perlin_noise.png")
+var base = load("res://Sprites/Geometry/ground.png")
 
-func _ready() -> void:
-	noise = load("res://Sprites/perlin_noise.png")
-	base = load("res://Sprites/ground.png")
-	#add the noise texture to the current texture
+func redraw():
 	base.blend_rect(noise, base.get_used_rect(), Vector2i.ZERO)
 	var made = ImageTexture.create_from_image(base)
 	texture = made;
+	
+func setPosition(x : float, y : float):
+	global_position = Vector2(x, y)
+	newNoise()
+
+func addPosition(x : float, y: float):
+	global_position += Vector2(x, y)
+	newNoise()
+
+func newNoise():
+	#using the position we have to figure out the noise sample
+	redraw()
+	return

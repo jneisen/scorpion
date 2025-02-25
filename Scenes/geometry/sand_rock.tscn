@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj31o1xrh8wsa"]
+
+[ext_resource type="Texture2D" uid="uid://ch454kia1uopy" path="res://Sprites/Geometry/sand_rock.png" id="1_o6fmq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1re8f"]
+size = Vector2(638, 639)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_1re8f")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(40, 40)
+texture = ExtResource("1_o6fmq")

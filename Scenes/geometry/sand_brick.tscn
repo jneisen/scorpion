@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv4trc0w0bj4c"]
+
+[ext_resource type="Texture2D" uid="uid://5k72yb4ylu1f" path="res://Sprites/Geometry/sand_brick.png" id="1_lrwyk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b33gi"]
+size = Vector2(640, 640)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(40, 40)
+texture = ExtResource("1_lrwyk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_b33gi")
+debug_color = Color(0, 0.6, 0.701961, 0)

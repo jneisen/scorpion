@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c514n21iooof7"]
+
+[ext_resource type="Texture2D" uid="uid://bw68c4g1uh4oc" path="res://Sprites/Geometry/barrel_cactus.png" id="1_df4tt"]
+[ext_resource type="Script" path="res://Scripts/hitbox.gd" id="1_onf6u"]
+[ext_resource type="Texture2D" uid="uid://iaft4ymgx080" path="res://Sprites/Geometry/barrel_cactus_destroyed.png" id="2_gttbi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jbnws"]
+radius = 333.781
+
+[node name="StaticBody2D" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_onf6u")
+death_sprite = ExtResource("2_gttbi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 512
+visibility_layer = 512
+scale = Vector2(40, 40)
+texture = ExtResource("1_df4tt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jbnws")
+debug_color = Color(0.486275, 0.556863, 0.505882, 0)

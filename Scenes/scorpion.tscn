@@ -1,56 +1,120 @@
-[gd_scene load_steps=10 format=3 uid="uid://8w4trvc2dhig"]
+[gd_scene load_steps=16 format=3 uid="uid://8w4trvc2dhig"]
 
 [ext_resource type="Script" path="res://Scripts/character_control.gd" id="1_1dj1s"]
 [ext_resource type="Texture2D" uid="uid://baaaf774idbxf" path="res://Sprites/scorpion.png" id="1_efx4o"]
-[ext_resource type="Texture2D" uid="uid://cfv5dhattq23" path="res://Sprites/tail.png" id="3_mbhqb"]
-[ext_resource type="Texture2D" uid="uid://cp3r5ke1xsc8q" path="res://Sprites/scorpion_anim/tail-idle1.png" id="4_5ae5j"]
-[ext_resource type="Texture2D" uid="uid://t2demq8rk2j7" path="res://Sprites/scorpion_anim/tail-idle2.png" id="5_yyqav"]
-[ext_resource type="Texture2D" uid="uid://bd0h7u8viv65o" path="res://Sprites/scorpion_anim/tail-idle3.png" id="6_tb2c6"]
+[ext_resource type="Texture2D" uid="uid://jn2273oxmnx5" path="res://Sprites/scorpion_anim/scorpion_walk1.png" id="3_dsxwg"]
+[ext_resource type="Texture2D" uid="uid://n0ionktgkmdu" path="res://Sprites/scorpion_anim/scorpion_walk2.png" id="4_sfvif"]
+[ext_resource type="Texture2D" uid="uid://brgwrkq28s5r2" path="res://Sprites/tail_sprite_sheet.png" id="5_ky8ur"]
+[ext_resource type="Texture2D" uid="uid://bny7kathlpahn" path="res://Sprites/footsteps.png" id="6_4n55a"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ve1o5"]
+gravity = Vector3(0, 0, 0)
+scale_min = 40.0
+scale_max = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eo2xj"]
-radius = 205.0
+radius = 275.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r8agf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_efx4o")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_dsxwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_efx4o")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_sfvif")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 10.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8etv4"]
-animations = [{
-"frames": [{
-"duration": 2.0,
-"texture": ExtResource("3_mbhqb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_5ae5j")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_yyqav")
-}, {
-"duration": 2.0,
-"texture": ExtResource("6_tb2c6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_yyqav")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_5ae5j")
-}],
-"loop": true,
-"name": &"default",
-"speed": 7.0
-}]
+[sub_resource type="GDScript" id="GDScript_kd54g"]
+script/source = "extends RayCast2D
+
+"
+
+[sub_resource type="Animation" id="Animation_3tvx4"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_j764j"]
+resource_name = "fire"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TailSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5, 0]
+}
+
+[sub_resource type="Animation" id="Animation_8he7h"]
+resource_name = "idle"
+length = 1.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TailSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_0u8ct"]
+resource_name = "reset"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TailSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 0, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_10sr5"]
+_data = {
+"RESET": SubResource("Animation_3tvx4"),
+"fire": SubResource("Animation_j764j"),
+"idle": SubResource("Animation_8he7h"),
+"reset": SubResource("Animation_0u8ct")
+}
 
 [node name="Scorpion" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_1dj1s")
 rotation_speed = 1.0
 forward_speed = 6
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 30
+amount_ratio = 0.75
+process_material = SubResource("ParticleProcessMaterial_ve1o5")
+texture = ExtResource("6_4n55a")
+lifetime = 15.0
+randomness = 0.08
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, 33)
@@ -59,12 +123,24 @@ shape = SubResource("CircleShape2D_eo2xj")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(40, 40)
 sprite_frames = SubResource("SpriteFrames_r8agf")
-frame_progress = 0.304301
+frame_progress = 0.737887
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -100)
 
-[node name="TailSprite" type="AnimatedSprite2D" parent="."]
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, -350)
+collision_mask = 3
+script = SubResource("GDScript_kd54g")
+
+[node name="TailAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_10sr5")
+}
+
+[node name="TailSprite" type="Sprite2D" parent="."]
 scale = Vector2(40, 40)
-sprite_frames = SubResource("SpriteFrames_8etv4")
-frame_progress = 0.206926
+texture = ExtResource("5_ky8ur")
+hframes = 4
+vframes = 2
+frame = 4

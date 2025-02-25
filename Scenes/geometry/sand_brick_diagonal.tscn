@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://di3dv1xlqw4qa"]
+
+[ext_resource type="Texture2D" uid="uid://dv1fhroekwf0k" path="res://Sprites/Geometry/sand_brick_triangle.png" id="1_1jw2g"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_5jr8f"]
+points = PackedVector2Array(-320, 320, 320, -320, 320, 320)
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(40, 40)
+texture = ExtResource("1_1jw2g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_5jr8f")
+debug_color = Color(0, 0.6, 0.701961, 0)
